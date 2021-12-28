@@ -23,6 +23,8 @@ router.post('/register', async (req, res) => {
 
     let loginCnt = 0
 
+    let noticeSet = false
+
     const { userId, password } = await registerSchema.validateAsync(req.body)
     if (userId === password) {
       res.status(400).send({
@@ -44,7 +46,7 @@ router.post('/register', async (req, res) => {
 
     const createdAt = new Date(+new Date() + 3240 * 10000).toISOString().replace('T', ' ').replace(/\..*/, '')
 
-    await User.create({ userIdx, userId, hashedPassword, createdAt, loginCnt });
+    await User.create({ userIdx, userId, hashedPassword, createdAt, loginCnt, noticeSet });
 
     res.status(201).send({
       retult: "회원가입 완료"
@@ -97,7 +99,7 @@ router.post('/login', async (req, res) => {
     }
   } catch (err) {
     res.status(400).send({
-      errorMessage: "입력한 내용을 다시 확인 해주세요"
+      errorMessage: "입력한 내용을 다시 확인해주세요"
     })
     return
   }

@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 const authMiddlewares = require('./middlewares/auth-middleware')
 
 const userRouter = require('./routes/user')
+const noticeRouter = require('./routes/notice')
 
 const connect = require('./schemas')
 connect()
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
   res.send("hello zzz")
 })
 app.use('/api', express.urlencoded({ extended: false }), userRouter)
+app.use('/api', express.urlencoded({ extended: false }), noticeRouter)
 
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
