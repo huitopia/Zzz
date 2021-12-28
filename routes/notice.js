@@ -3,7 +3,6 @@ const router = express.Router()
 const Notice = require('../schemas/notice')
 const User = require('../schemas/users')
 const authMiddleware = require('../middlewares/auth-middleware')
-const users = require('../schemas/users')
 
 // 알람 팝업 등록
 router.post('/notice', authMiddleware, async (req, res) => {
@@ -21,7 +20,7 @@ router.post('/notice', authMiddleware, async (req, res) => {
     const createdAt = new Date(+new Date() + 3240 * 10000).toISOString().replace('T', ' ').replace(/\..*/, '')
 
     await Notice.create({ noticeIdx, userIdx, sleepChk, timePA, hour, min, createdAt })
-    await User.updateOne({ userIdx }, {$set: { noticeSet: true }})
+    await User.updateOne({ userIdx }, { $set: { noticeSet: true } })
     res.status(201).send({
       result: "알람 설정 완료"
     })
@@ -32,7 +31,6 @@ router.post('/notice', authMiddleware, async (req, res) => {
     })
     return
   }
-
 })
 
 // 알람 정보
@@ -71,7 +69,7 @@ router.put('/notice/:userIdx', authMiddleware, async (req, res) => {
 
   try {
     if (tokenUser === dbUser) {
-      await Notice.updateOne({ userIdx }, { $set: { sleepChk, timePA, hour, min }})
+      await Notice.updateOne({ userIdx }, { $set: { sleepChk, timePA, hour, min } })
       res.status(201).send({
         result: "알람 정보 수정 완료"
       })

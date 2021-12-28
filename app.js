@@ -7,6 +7,7 @@ const authMiddlewares = require('./middlewares/auth-middleware')
 
 const userRouter = require('./routes/user')
 const noticeRouter = require('./routes/notice')
+const diaryRouter = require('./routes/diary')
 
 const connect = require('./schemas')
 connect()
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 })
 app.use('/api', express.urlencoded({ extended: false }), userRouter)
 app.use('/api', express.urlencoded({ extended: false }), noticeRouter)
+app.use('/api', express.urlencoded({ extended: false }), diaryRouter)
 
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`)
