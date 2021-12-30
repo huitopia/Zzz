@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 const DiarySchema = new mongoose.Schema({
   diaryIdx: Number,
-  year: String,
-  month: String,
+  yearMonth: String,
   day: String,
   feelScore: Number,
   sleepScore: Number,

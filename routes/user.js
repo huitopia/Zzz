@@ -69,6 +69,8 @@ router.post('/login', async (req, res) => {
   try {
     const { userId, password } = await loginSchema.validateAsync(req.body)
     const user = await User.findOne({ userId }).exec()
+    const userIdx = user["userIdx"]
+    const noticeSet = user["noticeSet"]
 
     if (!user) {
       res.status(400).send({
@@ -83,13 +85,15 @@ router.post('/login', async (req, res) => {
       const token = jwt.sign({ userIdx: user.userIdx }, 'my-secret-key')
       // 0이면 1 생성 아니면 +1 업데이트
       let loginCnt = user.loginCnt + 1
-      console.log(loginCnt);
       await User.updateOne({ userId }, { $set: { loginCnt } })
+
       res.status(200).send({
         result: "success",
+        userIdx,
         userId,
-        token,
-        loginCnt
+        loginCnt,
+        noticeSet,
+        token
       })
     } else {
       res.status(401).send({
