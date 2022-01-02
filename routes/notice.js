@@ -43,7 +43,8 @@ router.get('/notice/:userIdx', authMiddleware, async (req, res) => {
 
   try {
     if (tokenUser === dbUser) {
-      const notice = await Notice.find({ userIdx: userIdx })
+      const notice = await Notice.find({ userIdx: userIdx }
+        , { _id: 0, noticeIdx: 1, sleepChk: 1, timePA: 1, hour: 1, min: 1, createdAt: 1})
       res.status(200).send(notice)
     } else {
       res.status(403).send({

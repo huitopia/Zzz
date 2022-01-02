@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const DiarySchema = new mongoose.Schema({
   diaryIdx: Number,
   yearMonth: String,
-  day: String,
+  day: Number,
   feelScore: Number,
   sleepScore: Number,
   comment: String,

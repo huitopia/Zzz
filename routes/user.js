@@ -113,7 +113,6 @@ router.post('/login', async (req, res) => {
 // 로그인 인증
 router.get('/me', authMiddleware, async (req, res) => {
   const { user } = res.locals
-  // console.log("##########사용자 정보##########", res.locals)
   res.send({
     user: {
       userIdx: user.userIdx,

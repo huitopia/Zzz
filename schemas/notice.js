@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const NoticeSchema = new mongoose.Schema({
   noticeIdx: Number,
   sleepChk: Boolean,
-  timePA: Boolean,
+  timePA: String,
   hour: Number,
   min: Number,
   userIdx: Number,
