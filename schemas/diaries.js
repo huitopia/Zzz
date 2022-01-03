@@ -5,8 +5,9 @@ const DiarySchema = new mongoose.Schema({
   day: Number,
   feelScore: Number,
   sleepScore: Number,
+  scoreAvg: Number,
   comment: String,
-  inputDay: Date,
+  inputDate: String,
   createdAt: String,
   updatedAt: String,
   userIdx: Number
