@@ -1,0 +1,20 @@
+//   "extends": ["eslint:recommended","airbnb-base", "plugin:prettier/recommended"],
+
+{
+  "env": {
+      "browser": true,
+      //"commonjs": true,
+      "es2021": true,
+      "node": true   // require is not defined 
+  },
+  "extends": ["eslint:recommended","airbnb-base", "plugin:prettier/recommended"],
+  "parser": "babel-eslint", // ECMA 최신 버전 사용
+  "sourceType": "module",
+  "parserOptions": {
+      "ecmaVersion": 11
+      // "sourceType": "module"
+  },
+  "rules": {
+      "indent": ["error", 2]
+  }
+}

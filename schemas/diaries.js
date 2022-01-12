@@ -1,16 +1,21 @@
-const mongoose = require('mongoose')
-const DiarySchema = new mongoose.Schema({
-  diaryIdx: Number,
-  yearMonth: String,
-  day: Number,
-  feelScore: Number,
-  sleepScore: Number,
-  scoreAvg: Number,
-  comment: String,
-  inputDate: String,
-  createdAt: String,
-  updatedAt: String,
-  userIdx: Number
-})
+const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Diary', DiarySchema)
+const { Schema } = mongoose;
+
+require('dotenv').config();
+
+const DiarySchema = new Schema({
+  diaryIdx: { type: Number, required: true },
+  yearMonth: { type: String, required: true },
+  day: { type: Number, required: true },
+  feelScore: { type: Number, required: true },
+  sleepScore: { type: Number, required: true },
+  scoreAvg: { type: Number, required: true },
+  comment: { type: String, default: null },
+  inputDate: { type: String, required: true },
+  createdAt: { type: String, required: true },
+  updatedAt: { type: String, default: null },
+  userIdx: { type: Number, required: true },
+});
+
+module.exports = mongoose.model('Diary', DiarySchema);

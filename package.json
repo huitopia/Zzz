@@ -1,7 +1,6 @@
 {
   "name": "zzz",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,17 +17,40 @@
   "homepage": "https://github.com/huitopia/Zzz#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "babel-eslint": "^10.1.0",
     "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "express-session": "^1.17.2",
     "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^6.1.4",
     "morgan": "^1.10.0",
-    "multer": "^1.4.4"
+    "multer": "^1.4.4",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
+    "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "qs": "^6.10.2",
+    "session": "^0.1.0",
+    "upgrade": "^1.1.0"
+  },
+  "description": "",
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.5.1"
   }
 }

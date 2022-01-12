@@ -1,7 +1,12 @@
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+dotenv.config()
+
+const production = process.env.PRODUCTION
+const dev1 = process.env.DEV
 
 const connect = () => {
-  mongoose.connect('mongodb://localhost:27017/zzz',{
+  mongoose.connect(dev1,{
     useNewUrlParser: true,
     useUnifiedTopology: true
   }).catch((err) => console.log((err)))
