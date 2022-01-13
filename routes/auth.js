@@ -1,6 +1,8 @@
 const express = require('express');
+const { JsonWebTokenError } = require('jsonwebtoken');
 const router = express.Router();
 const passport = require('passport');
+const kakaoStrategy = require('../passport/kakaoStrategy');
 
 const User = require('../schemas/users');
 
@@ -31,7 +33,14 @@ router.get(
     failureRedirect: '/',
   }),
   (req, res) => {
-    res.redirect('/');
+    try {
+      const token = req.user.userId;
+      res.redirect('/' + token);
+    } catch (err) {
+      res.status(400).send({
+        errorMessage: '로그인 실행 중 에러가 발생하였습니다.',
+      });
+    }
   },
 );
 
