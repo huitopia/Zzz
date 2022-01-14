@@ -1,19 +1,19 @@
-const passport = require('passport');
-const KakaoStrategy = require('passport-kakao').Strategy;
-const dotenv = require('dotenv');
-const User = require('../schemas/users');
+const passport = require("passport");
+const KakaoStrategy = require("passport-kakao").Strategy;
+const dotenv = require("dotenv");
+const User = require("../schemas/users");
 
 dotenv.config();
 
 module.exports = () => {
   passport.use(
-    'kakao',
+    "kakao",
     new KakaoStrategy(
       {
         clientID: process.env.KAKAO_ID,
         clientSecret: process.env.KAKAO_SECRET,
         // callbackURL: '/auth/kakao/callback',
-        callbackURL: 'http://localhost:3000/auth/kakao/callback',
+        callbackURL: "http://localhost:3000/auth/kakao/callback",
       },
       async (accessToken, refreshToken, profile, done) => {
         console.log(`accessToken : ${accessToken}`); // 사용자 인증. restApi 6시간
@@ -37,9 +37,9 @@ module.exports = () => {
               refreshToken,
             };
             done(null, userToken);
-            console.log('login', userToken);
+            console.log("login", userToken);
           } else {
-            const recentUser = await User.find().sort('-userIdx').limit(1);
+            const recentUser = await User.find().sort("-userIdx").limit(1);
             let userIdx = 1;
             if (recentUser.length != 0) {
               userIdx = recentUser[0].userIdx + 1;
@@ -51,8 +51,8 @@ module.exports = () => {
 
             const createdAt = new Date(+new Date() + 3240 * 10000)
               .toISOString()
-              .replace('T', ' ')
-              .replace(/\..*/, '');
+              .replace("T", " ")
+              .replace(/\..*/, "");
 
             const newUser = await User.create({
               userIdx,
@@ -70,13 +70,13 @@ module.exports = () => {
               accessToken,
               refreshToken,
             };
-            console.log('register', userToken);
+            console.log("register", userToken);
             done(null, userToken);
           }
         } catch (err) {
           done(err);
         }
-      },
-    ),
+      }
+    )
   );
 };

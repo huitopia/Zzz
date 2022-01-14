@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-require('dotenv').config();
+require("dotenv").config();
 
 const NoticeSchema = new Schema({
   noticeIdx: { type: Number, required: true },
@@ -14,4 +14,4 @@ const NoticeSchema = new Schema({
   userIdx: { type: Number, required: true },
 });
 
-module.exports = mongoose.model('Notice', NoticeSchema);
+module.exports = mongoose.model("Notice", NoticeSchema);

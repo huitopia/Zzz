@@ -20,6 +20,7 @@ const diaryRouter = require('./routes/diary');
 const asmrRouter = require('./routes/asmr');
 const scoresRouter = require('./routes/score');
 const authRouter = require('./routes/auth');
+const pushRouter = require('./routes/push');
 
 // const MongoStore = require('connect-mongo');
 const connect = require('./schemas');
@@ -43,16 +44,23 @@ app.use(
 // app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
+webpush.setVapidDetails(
+  'mailto: www.zzzapp.co.kr',
+  process.env.VAPID_PUBLIC_KEY,
+  process.env.VAPID_PRIVATE_KEY,
+);
 
 app.get('/', (req, res) => {
-  res.send('hello zzz');
+  res.send('Hello Zzz');
 });
+
 app.use('/api', express.urlencoded({ extended: false }), userRouter);
 app.use('/api', express.urlencoded({ extended: false }), noticeRouter);
 app.use('/api', express.urlencoded({ extended: false }), diaryRouter);
 app.use('/api/asmr', express.urlencoded({ extended: false }), asmrRouter);
 app.use('/api', express.urlencoded({ extended: false }), scoresRouter);
 app.use('/auth', express.urlencoded({ extended: false }), authRouter);
+app.use('/api', express.urlencoded({ extended: false }), pushRouter);
 
 app.listen(port, () => {
   console.log(`listening at http://localhost:${port}`);

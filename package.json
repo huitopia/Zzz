@@ -42,7 +42,8 @@
     "path": "^0.12.7",
     "qs": "^6.10.2",
     "session": "^0.1.0",
-    "upgrade": "^1.1.0"
+    "upgrade": "^1.1.0",
+    "web-push": "^3.4.5"
   },
   "description": "",
   "devDependencies": {

@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-require('dotenv').config();
+require("dotenv").config();
 
 const UserSchema = new Schema({
   userIdx: { type: Number, required: true },
@@ -13,4 +13,4 @@ const UserSchema = new Schema({
   createdAt: { type: String, required: true },
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-require('dotenv').config();
+require("dotenv").config();
 
 const DiarySchema = new Schema({
   diaryIdx: { type: Number, required: true },
@@ -18,4 +18,4 @@ const DiarySchema = new Schema({
   userIdx: { type: Number, required: true },
 });
 
-module.exports = mongoose.model('Diary', DiarySchema);
+module.exports = mongoose.model("Diary", DiarySchema);
